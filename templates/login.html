@@ -24,7 +24,8 @@
             <!-- <div>
                 <img src=归档.zip"bg.jpg">
             </div> -->
-           <form method="post">
+           <form method="post" onsubmit="return login();">
+               {% csrf_token %}
                <div class="input">
                    <input type="text" name="username" id="login-user" placeholder="请输入您的学号/工号">
                </div>
@@ -33,7 +34,7 @@
                </div>
                {#            <div class="btn login-btn">#}
                {#                <span style="font-size: 20px;">登录</span>#}
-               <input class="btn login-btn" name="login_btn" style="font-size: 20px" type="submit" value="登录">
+               <input class="btn login-btn" name="login_btn" type="submit" style="font-size: 20px;" value="登录">
                {#            </div>#}
            </form>
 
@@ -59,7 +60,7 @@
                 <li class="green-btn"></li> -->
             </div>
             <div class="title">门户注册</div>
-           <form method="post" action="register">
+           <form method="POST" action="regist" onsubmit="return register()">
                <div class="input">
                    <input type="text" name="reg_name" id="sign-user" placeholder="学号">
                </div>
@@ -68,14 +69,14 @@
                </div>
 
                <div class="input">
-                   <input type="text" name="reg_inst" id="sign-grade" placeholder="学院">
+                   <input type="text" name="reg_inst" id="sign-inst" placeholder="学院">
                </div>
                <div class="input">
-                   <input type="text" name="reg_major" id="sign-grade" placeholder="专业">
+                   <input type="text" name="reg_major" id="sign-major" placeholder="专业">
                </div>
 
                <div class="select1">
-                   <select id="sel" name="reg_grade" value="年级">
+                   <select id="sign-grade" name="reg_grade" value="年级">
                        <option value="2016">2016</option>
                        <option value="2017">2017</option>
                        >
@@ -85,7 +86,7 @@
                </div>
 
                <div class="select1">
-                   <select id="sel1" name="reg_sex" value="性别">
+                   <select id="sign-sex" name="reg_sex" value="性别">
                        <option value="男">男</option>
                        <option value="女">女</option>
                        >
@@ -107,5 +108,69 @@
 
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="./../static/js/loginscript.js"></script>
+    <script>
+        function login()
+        {
+            var flag = false;
+            var name = $('#login-user').val();
+            var pwd = $('#login-password').val();
+
+            if(name.length ==0 || pwd.length==0)
+            {
+                alert('用户名或密码为空');
+                return false;
+            }
+
+            $.ajax({
+                url:'/login/checkuser',
+                type:'get',
+                async:false,
+                data:{'uname':name,'pwd':pwd},
+                success:function(result){
+                    flag2 = result.flag;
+                    if(flag2){
+                        flag = true;
+                    }
+                    else
+                        alert('用户名或密码有误');
+                }
+            });
+            return flag;
+        }
+
+        function register()
+        {
+            var flag = false;
+            var name = $('#sign-user').val();
+            var pwd = $('#sign-password').val();
+            var inst = $('#sign-inst').val();
+            var major = $('#sign-major').val();
+            var grade = $('#sign-grade').val();
+            var sex = $('#sign-sex').val();
+
+            if(name.length ==0 || pwd.length==0 || inst.length == 0 || major.length == 0)
+            {
+                alert('输入信息不能为空');
+                return false;
+            }
+
+            $.ajax({
+                url:'/login/register',
+                type:'get',
+                async:false,
+                data:{'name':name,'pwd':pwd,'inst':inst,'major':major,'grade':grade,'sex':sex},
+                success:function(result){
+                    flag2 = result.flag;
+                    if(flag2){
+                        flag = true;
+                    }
+                    else
+                        alert('用户已存在');
+                }
+            });
+            return flag;
+        }
+
+    </script>
 </body>
 </html>
