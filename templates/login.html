@@ -24,15 +24,27 @@
             <!-- <div>
                 <img src=归档.zip"bg.jpg">
             </div> -->
-            <div class="input">
-                <input type="text" id="login-user" placeholder="请输入您的学号/工号">
-            </div>
-            <div class="input">
-                <input type="password" id="login-password" placeholder="请输入您的密码">
-            </div>
-            <div class="btn login-btn">
-                <span style="font-size: 20px;">登录</span>
-            </div>
+           <form method="post">
+               <div class="input">
+                   <input type="text" name="username" id="login-user" placeholder="请输入您的学号/工号">
+               </div>
+               <div class="input">
+                   <input type="password" name="password" id="login-password" placeholder="请输入您的密码">
+               </div>
+               {#            <div class="btn login-btn">#}
+               {#                <span style="font-size: 20px;">登录</span>#}
+               <input class="btn login-btn" style="font-size: 20px" type="submit" value="登录">
+               {#            </div>#}
+           </form>
+
+           {% if messages %}
+               <script>
+                   {% for msg in messages %}
+                       alert('{{ msg.message }}');
+                   {% endfor %}
+               </script>
+           {% endif %}
+
             <div class="change-box login-change">
                 <div class="change-btn toSign">
                     <span>去注册</span>
