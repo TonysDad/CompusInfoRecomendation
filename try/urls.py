@@ -19,7 +19,9 @@ from Apps import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('main/',views.test),
+    path('main/',views.mainpage),
     path('login/',views.login),
-    path('login/register',views.register)
+    path('login/checkuser',views.Checkuser.as_view()),
+    path('login/register',views.Register.as_view()),
+    path('login/regist',views.register)
 ]
