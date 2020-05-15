@@ -9,6 +9,12 @@ from Apps.models import User
 
 # Create your views here.
 def mainpage(request):
+
+	#通过url得到当前登录的用户
+	url = request.get_full_path()
+	username = url.split('=')[-1]
+	print(username)
+
 	#得到所有新闻信息
 	newslist = News.objects.all()
 
@@ -16,7 +22,9 @@ def mainpage(request):
 
 def login(request):
 	if request.method == 'POST':
-		return HttpResponseRedirect('../main')
+		username = request.POST.get('username')
+		# password = request.POST.get('password')
+		return HttpResponseRedirect('../main/?'+'username='+username)
 
 	return render(request,'login.html')
 #
