@@ -4,12 +4,14 @@ from django.db import models
 
 #新闻信息表
 class News(models.Model):
-	abstract = models.CharField('摘要',max_length=100,blank=False)
+	title = models.CharField('标题',max_length=100,blank=False,default='none')
+	cover_link = models.CharField('封面链接',max_length=100,blank=True)
+	abstract = models.CharField('摘要',max_length=200,blank=False)
 	date = models.DateField('发布时间',blank=False)
 	link = models.CharField('网页链接',max_length=100,blank=False)
 	content = models.TextField('新闻内容')
 	pic_link = models.TextField('图片链接')
-	category = models.CharField('所属类别',max_length=200)
+	category = models.CharField('所属类别',max_length=200,default='0')
 	viewtimes = models.IntegerField('浏览次数',default=0)
 
 	class Meta:
