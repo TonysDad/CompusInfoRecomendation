@@ -5,49 +5,41 @@
         <main id="main" class="site-main row multi-columns-row" role="main">
 
             {% for news in newslist %}
-                <article
-                        class="col-sm-12 col-md-12 col-lg-6 two-columns-style post-1075 post type-post status-publish format-standard has-post-thumbnail hentry category-featured category-tidbits tag-featured tag-tidbits">
-                <span class="cat cat-title"><span class="cat-links">
-                    <p >新闻</p></span></span>
+                <article class="col-sm-12 col-md-12 col-lg-6 two-columns-style post-1075 post type-post status-publish format-standard has-post-thumbnail hentry category-featured category-tidbits tag-featured tag-tidbits">
+                    <span class="cat cat-title"><span class="cat-links">
+                            <p>新闻</p>
+                        </span></span>
                     <div class="post-thumbnail">
-                        <div class="hovereffect" data-sr-id="13"
-                             style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">
-                            <a href="https://demo.themely.com/verb/index.php/2014/12/22/aliquam-faucibus-lacinia/"
-                               rel="bookmark"><img
-                                    width="800" height="400" src={{ news.cover_link}}
-                                    class="attachment-verb-lite-rectangle size-verb-lite-rectangle wp-post-image"
-                                    alt="Aliquam faucibus lacinia interdum nisi"></a>
+                        <div class="hovereffect" data-sr-id="13" style="height: 204px; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">
+                            <a href="https://demo.themely.com/verb/index.php/2014/12/22/aliquam-faucibus-lacinia/" rel="bookmark"><img
+                                 width="800" height="204px" src={{ news.cover_link }} class="attachment-verb-lite-rectangle size-verb-lite-rectangle wp-post-image"
+                                 alt="Aliquam faucibus lacinia interdum nisi"></a>
                         </div>
                     </div>
                     <header class="entry-header">
-                        <h2 class="entry-title"><a
-                                href="https://demo.themely.com/verb/index.php/2014/12/22/aliquam-faucibus-lacinia/"
-                                rel="bookmark">{{ news.title }}</a></h2>
+                        <h2 class="entry-title" style="height: 46px;"><a href="https://demo.themely.com/verb/index.php/2014/12/22/aliquam-faucibus-lacinia/"
+                             rel="bookmark">{{ news.title }}</a></h2>
                         <div class="row">
                             <div class="col-xs-10 col-sm-10 col-md-10">
                                 <div class="entry-meta">
-                                <span class="byline"> <span class="author vcard"><a class="url"
-                                                                                    href="https://demo.themely.com/verb/index.php/author/admin/"><img
-                                        width="24" height="24" src="./../static/about-pic-150x150.jpg"
-                                        class="avatar avatar-24 photo" alt=""
-                                        srcset="https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-150x150.jpg 150w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-300x300.jpg 300w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic.jpg 441w"
-                                        sizes="(max-width: 24px) 100vw, 24px"> Hans Desjarlais</a></span></span> <span
-                                        class="posted-on">on
-                                    <time class="entry-date published" datetime="2014-12-22T01:59:50+00:00">
-                                        {{ news.date }}
-                                    </time></span>
+                                    <span class="byline"> <span class="author vcard"><a class="url" href="https://demo.themely.com/verb/index.php/author/admin/"><img
+                                                 width="24" height="24" src="./../static/about-pic-150x150.jpg" class="avatar avatar-24 photo" alt=""
+                                                 srcset="https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-150x150.jpg 150w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-300x300.jpg 300w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic.jpg 441w"
+                                                 sizes="(max-width: 24px) 100vw, 24px"> Hans Desjarlais</a></span></span> <span class="posted-on">on
+                                        <time class="entry-date published" datetime="2014-12-22T01:59:50+00:00">
+                                            {{ news.date }}
+                                        </time></span>
                                 </div><!-- .entry-meta -->
 
                             </div>
 
                             <div class="col-xs-2 col-sm-2 col-md-2">
 
-                                <div class="entry-meta pull-right"  style="width: 50px">
+                                <div class="entry-meta pull-right" style="width: 50px">
 
-                                    <i class="fa fa-comments-o"></i> <span class="comments-link"><a
-                                        href="https://demo.themely.com/verb/index.php/2014/12/22/aliquam-faucibus-lacinia/#respond">
-                                    {{ news.viewtimes }}
-                                </a></span>
+                                    <i class="fa fa-comments-o"></i> <span class="comments-link"><a href="https://demo.themely.com/verb/index.php/2014/12/22/aliquam-faucibus-lacinia/#respond">
+                                            {{ news.viewtimes }}
+                                        </a></span>
                                 </div><!-- .entry-meta -->
 
                             </div>
@@ -57,7 +49,7 @@
 
                     </header><!-- .entry-header -->
 
-                    <div class="entry-content">
+                    <div class="entry-content" style="display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;">
 
                         {{ news.abstract }}
 
@@ -647,16 +639,32 @@
 
             <div class="clearfix"></div>
 
+
             <div class="post-nav">
                 <ul class="pager">
-                    <li class="active"><span class="active">01</span></li>
-                    <li><a href="https://demo.themely.com/verb/index.php/page/2/">02</a></li>
-                    <li><a href="https://demo.themely.com/verb/index.php/page/3/">03</a></li>
-                    <li><a href="https://demo.themely.com/verb/index.php/page/4/">04</a></li>
-                    <li><a href="https://demo.themely.com/verb/index.php/page/2/" title="next">Next</a></li>
-                    <li class="next"><a href="https://demo.themely.com/verb/index.php/page/5/">Last</a></li>
+                    {% if newslist.has_previous %}
+                        <li class="previous"><a href="/main?page=1">第一页</a></li>
+                    <li><a href="/main?page={{ newslist.previous_page_number}}"}} title="previous">上一页</a></li>
+                    {% endif %}
+                
+                    {% for page in pageList %}
+                        {% if page == pagenum %}
+                            <li class="active"><span class="active">{{ page }}</span></li>
+                        {% else %}
+                            <li><a href="/main?page={{ page }}">{{ page }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    
+
+
+                    {% if newslist.has_next %}
+                        <li><a href="/main?page={{ newslist.next_page_number }}" title="next">下一页</a></li>
+                        <li class="next"><a href="/main?page={{ finalpage }}">最后一页</a></li>
+                    {% endif %}
+
                 </ul>
             </div>
+
 
 
         </main><!-- #main -->

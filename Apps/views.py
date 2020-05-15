@@ -3,12 +3,17 @@ from django.http import HttpResponseRedirect,JsonResponse
 from django.contrib import messages
 from django.http import HttpResponse
 from django.views import View
-
+from django.core.paginator import Paginator
 from Apps.models import News
 from Apps.models import User
 
 # Create your views here.
 def mainpage(request):
+
+	#得到当前页页码参数，没有为1
+	num = request.GET.get('page','1')
+	num = int(num)
+	print("num:"+str(num))
 
 	#通过url得到当前登录的用户
 	url = request.get_full_path()
@@ -18,7 +23,21 @@ def mainpage(request):
 	#得到所有新闻信息
 	newslist = News.objects.all()
 
-	return render(request,'main.html',{'newslist':newslist})
+	#创建分页对象
+	pageObj = Paginator(newslist,per_page=10)
+	perPageList = pageObj.page(num)
+	#获取当前页的数据
+
+	#生成页码列表
+	begin = num -2
+	if begin < 1:
+		begin = 1
+	end = num+3
+	if end >pageObj.num_pages:
+		end = pageObj.num_pages
+	pagelist = range(begin,end)
+
+	return render(request,'main.html',{'newslist':perPageList,'pageList':pagelist,'pagenum':num,'finalpage':pageObj.num_pages})
 
 def login(request):
 	if request.method == 'POST':
