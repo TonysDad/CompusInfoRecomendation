@@ -2,11 +2,30 @@ from django.db import models
 
 # Create your models here.
 
+class AllNews(models.Model):
+	title = models.CharField('标题',max_length=100,blank=False,default='none')
+	cover_link = models.CharField('封面链接',max_length=100,blank=True)
+	abstract = models.CharField('摘要',max_length=200,blank=False)
+	date = models.DateField('发布时间',blank=False)
+	link = models.CharField('网页链接',max_length=100,blank=False)
+	content = models.TextField('新闻内容')
+	pic_link = models.TextField('图片链接')
+	viewtimes = models.IntegerField('浏览次数',default=0)
+	type = models.CharField('新闻种类',max_length=100,default='none')
+
+	class Meta:
+		verbose_name = '全部新闻'
+		verbose_name_plural = '全部新闻'
+		db_table = '全部新闻表'
+
+	def __str__(self):
+		return self.title
+
 #新闻信息表
 class News(models.Model):
 	title = models.CharField('标题',max_length=100,blank=False,default='none')
 	cover_link = models.CharField('封面链接',max_length=100,blank=True)
-	abstract = models.CharField('摘要',max_length=200,blank=False)
+	abstract = models.TextField('摘要')
 	date = models.DateField('发布时间',blank=False)
 	link = models.CharField('网页链接',max_length=100,blank=False)
 	content = models.TextField('新闻内容')
@@ -20,7 +39,7 @@ class News(models.Model):
 		db_table = '学校新闻表'
 
 	def __str__(self):
-		return self.abstract
+		return self.id
 
 #通知公告表
 class Inform(models.Model):
@@ -41,11 +60,9 @@ class Inform(models.Model):
 
 #学院新闻表
 class Collegial_News(models.Model):
-	abstract = models.CharField('摘要',max_length=100,blank=False)
 	date = models.DateField('发布时间',blank=False)
 	link = models.CharField('网页链接',max_length=100,blank=False)
 	content = models.TextField('新闻内容')
-	pic_link = models.TextField('图片链接')
 	category = models.CharField('所属类别',max_length=200)
 	viewtimes = models.IntegerField('浏览次数',default=0)
 	collegial = models.CharField('所属学院',max_length=30,blank=False)

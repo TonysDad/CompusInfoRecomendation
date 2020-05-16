@@ -4,8 +4,11 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.views import View
 from django.core.paginator import Paginator
+
 from Apps.models import News
 from Apps.models import User
+from Apps.gethtml import getcontent
+from Apps.models import AllNews
 
 # Create your views here.
 def mainpage(request):
@@ -13,7 +16,19 @@ def mainpage(request):
 	#得到当前页页码参数，没有为1
 	num = request.GET.get('page','1')
 	num = int(num)
-	print("num:"+str(num))
+
+	#得到需要显示的新闻种类
+	newstype = request.GET.get('nav','recommend')
+
+	#showcontent表示是否为展示内容的页面,0则不是详细新闻页面
+	inserthtml = ''
+	showcontent = request.GET.get('content','0')
+
+	if showcontent == '1':
+		link = request.GET.get('link','null')  #得到新闻链接
+		inserthtml = getcontent(link)   #需要插入的html元素
+		print((inserthtml))
+		return render(request,'main.html',{'inserthtml':inserthtml})
 
 	#通过url得到当前登录的用户
 	url = request.get_full_path()
@@ -21,10 +36,14 @@ def mainpage(request):
 	print(username)
 
 	#得到所有新闻信息
-	newslist = News.objects.all()
+	recommend_news = Get_Recommend_News(username)
+	recently_news = Get_Recently_View(username)
+	notice = Get_Notice()
+	hotTopic = Get_HotTopic()
+
 
 	#创建分页对象
-	pageObj = Paginator(newslist,per_page=10)
+	pageObj = Paginator(recommend_news,per_page=10)
 	perPageList = pageObj.page(num)
 	#获取当前页的数据
 
@@ -37,8 +56,30 @@ def mainpage(request):
 		end = pageObj.num_pages
 	pagelist = range(begin,end)
 
-	return render(request,'main.html',{'newslist':perPageList,'pageList':pagelist,'pagenum':num,'finalpage':pageObj.num_pages})
+	return render(request,'main.html',{'newslist':perPageList,'pageList':pagelist,'pagenum':num,
+	                                   'finalpage':pageObj.num_pages,'newstype':newstype,
+	                                   'inserthtml':inserthtml})
 
+#根据用户名推荐信息
+def Get_Recommend_News(username):
+	return News.objects.all()
+
+#得到用户最近浏览
+def Get_Recently_View(username):
+	return News.objects.all()
+
+#得到热门信息
+def Get_HotTopic():
+	return News.objects.all()
+
+#得到通知公告
+def Get_Notice():
+	return News.objects.all()
+
+# def gethtml(link):
+# 	return getcontent(link)
+
+#登录成功后执行的函数，转到mainpage
 def login(request):
 	if request.method == 'POST':
 		username = request.POST.get('username')

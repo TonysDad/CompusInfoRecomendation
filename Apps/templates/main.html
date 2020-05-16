@@ -1,674 +1,201 @@
 {% extends 'index.html' %}
 
-{% block left %}
-    <div id="primary" class="col-md-8 content-area">
-        <main id="main" class="site-main row multi-columns-row" role="main">
+{# 导航栏部分 #}
+{% block nav %}
+    <div class="wrapper-fluid wrapper-navbar" id="wrapper-navbar">
 
-            {% for news in newslist %}
-                <article class="col-sm-12 col-md-12 col-lg-6 two-columns-style post-1075 post type-post status-publish format-standard has-post-thumbnail hentry category-featured category-tidbits tag-featured tag-tidbits">
-                    <span class="cat cat-title"><span class="cat-links">
-                            <p>新闻</p>
-                        </span></span>
-                    <div class="post-thumbnail">
-                        <div class="hovereffect" data-sr-id="13" style="height: 204px; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">
-                            <a href="https://demo.themely.com/verb/index.php/2014/12/22/aliquam-faucibus-lacinia/" rel="bookmark"><img
-                                 width="800" height="204px" src={{ news.cover_link }} class="attachment-verb-lite-rectangle size-verb-lite-rectangle wp-post-image"
-                                 alt="Aliquam faucibus lacinia interdum nisi"></a>
-                        </div>
-                    </div>
-                    <header class="entry-header">
-                        <h2 class="entry-title" style="height: 46px;"><a href="https://demo.themely.com/verb/index.php/2014/12/22/aliquam-faucibus-lacinia/"
-                             rel="bookmark">{{ news.title }}</a></h2>
-                        <div class="row">
-                            <div class="col-xs-10 col-sm-10 col-md-10">
-                                <div class="entry-meta">
-                                    <span class="byline"> <span class="author vcard"><a class="url" href="https://demo.themely.com/verb/index.php/author/admin/"><img
-                                                 width="24" height="24" src="./../static/about-pic-150x150.jpg" class="avatar avatar-24 photo" alt=""
-                                                 srcset="https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-150x150.jpg 150w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-300x300.jpg 300w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic.jpg 441w"
-                                                 sizes="(max-width: 24px) 100vw, 24px"> Hans Desjarlais</a></span></span> <span class="posted-on">on
-                                        <time class="entry-date published" datetime="2014-12-22T01:59:50+00:00">
-                                            {{ news.date }}
-                                        </time></span>
-                                </div><!-- .entry-meta -->
-
-                            </div>
-
-                            <div class="col-xs-2 col-sm-2 col-md-2">
-
-                                <div class="entry-meta pull-right" style="width: 50px">
-
-                                    <i class="fa fa-comments-o"></i> <span class="comments-link"><a href="https://demo.themely.com/verb/index.php/2014/12/22/aliquam-faucibus-lacinia/#respond">
-                                            {{ news.viewtimes }}
-                                        </a></span>
-                                </div><!-- .entry-meta -->
-
-                            </div>
-
-                        </div>
+        <div class="container" style="max-width: 1400px;">
 
 
-                    </header><!-- .entry-header -->
+            <nav class="navbar navbar-light site-navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 
-                    <div class="entry-content" style="display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;">
+                <!-- Mobile ShiftNav Menu -->
 
-                        {{ news.abstract }}
-
-                    </div><!-- .entry-content -->
-
-                </article><!-- #post-## -->
-
-            {% endfor %}
-
-{##}
-{#            <article id="post-996" class="col-sm-12 col-md-12 col-lg-6 two-columns-style post-996 post type-post status-publish format-standard has-post-thumbnail hentry category-featured category-reviews tag-music tag-reviews">#}
-{##}
-{##}
-{#                <span class="cat cat-title"><span class="cat-links"><a href="https://demo.themely.com/verb/index.php/category/featured/"#}
-{#                         rel="category tag">Featured</a> <a href="https://demo.themely.com/verb/index.php/category/reviews/" rel="category tag">Reviews</a></span></span>#}
-{##}
-{##}
-{#                <div class="post-thumbnail">#}
-{##}
-{#                    <div class="hovereffect" data-sr-id="14" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">#}
-{##}
-{#                        <a href="https://demo.themely.com/verb/index.php/2014/06/19/review-with-bottom-box/" rel="bookmark"><img#}
-{#                             width="800" height="400" src="./../static/man-person-hand-party-800x400.jpg"#}
-{#                             class="attachment-verb-lite-rectangle size-verb-lite-rectangle wp-post-image" alt=""></a>#}
-{##}
-{#                    </div>#}
-{##}
-{#                </div>#}
-{##}
-{#                <header class="entry-header">#}
-{##}
-{#                    <h2 class="entry-title"><a href="https://demo.themely.com/verb/index.php/2014/06/19/review-with-bottom-box/"#}
-{#                         rel="bookmark">Facilisis tincidunt justo eget urna leo dapibus</a></h2>#}
-{##}
-{##}
-{#                    <div class="row">#}
-{##}
-{#                        <div class="col-xs-10 col-sm-10 col-md-10">#}
-{##}
-{#                            <div class="entry-meta">#}
-{##}
-{#                                <span class="byline"> <span class="author vcard"><a class="url" href="https://demo.themely.com/verb/index.php/author/admin/"><img#}
-{#                                             width="24" height="24" src="./../static/about-pic-150x150.jpg"#}
-{#                                             class="avatar avatar-24 photo" alt="" srcset="https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-150x150.jpg 150w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-300x300.jpg 300w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic.jpg 441w"#}
-{#                                             sizes="(max-width: 24px) 100vw, 24px"> Hans Desjarlais</a></span></span> <span class="posted-on">on#}
-{#                                    <time class="entry-date published" datetime="2014-06-19T03:39:02+00:00">June 19, 2014</time></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                        <div class="col-xs-2 col-sm-2 col-md-2">#}
-{##}
-{#                            <div class="entry-meta pull-right">#}
-{##}
-{#                                <i class="fa fa-comments-o"></i> <span class="comments-link"><a href="https://demo.themely.com/verb/index.php/2014/06/19/review-with-bottom-box/#respond">0</a></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-{##}
-{##}
-{##}
-{#                </header><!-- .entry-header -->#}
-{##}
-{#                <div class="entry-content">#}
-{##}
-{#                    Proin tristique elit et augue varius pellentesque. Donec enim neque, vulputate et commodo in, tristique sed#}
-{#                    velit. Phasellus ...#}
-{##}
-{#                </div><!-- .entry-content -->#}
-{##}
-{#            </article><!-- #post-## -->#}
-{##}
-{#            <article id="post-1752" class="col-sm-12 col-md-12 col-lg-6 two-columns-style post-1752 post type-post status-publish format-standard has-post-thumbnail hentry category-tidbits tag-tidbits">#}
-{##}
-{##}
-{#                <span class="cat cat-title"><span class="cat-links"><a href="https://demo.themely.com/verb/index.php/category/tidbits/"#}
-{#                         rel="category tag">Tidbits</a></span></span>#}
-{##}
-{##}
-{#                <div class="post-thumbnail">#}
-{##}
-{#                    <div class="hovereffect" data-sr-id="15" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">#}
-{##}
-{#                        <a href="https://demo.themely.com/verb/index.php/2014/01/16/nullam-lorem-eros-posuere-nec-gravida-dui/" rel="bookmark"><img#}
-{#                             width="800" height="400" src="./../static/pexels-photo-47261-800x400.jpeg"#}
-{#                             class="attachment-verb-lite-rectangle size-verb-lite-rectangle wp-post-image" alt=""></a>#}
-{##}
-{#                    </div>#}
-{##}
-{#                </div>#}
-{##}
-{#                <header class="entry-header">#}
-{##}
-{#                    <h2 class="entry-title"><a href="https://demo.themely.com/verb/index.php/2014/01/16/nullam-lorem-eros-posuere-nec-gravida-dui/"#}
-{#                         rel="bookmark">Nullam lorem eros, posuere nec gravida dui</a></h2>#}
-{##}
-{##}
-{#                    <div class="row">#}
-{##}
-{#                        <div class="col-xs-10 col-sm-10 col-md-10">#}
-{##}
-{#                            <div class="entry-meta">#}
-{##}
-{#                                <span class="byline"> <span class="author vcard"><a class="url" href="https://demo.themely.com/verb/index.php/author/admin/"><img#}
-{#                                             width="24" height="24" src="./../static/about-pic-150x150.jpg"#}
-{#                                             class="avatar avatar-24 photo" alt="" srcset="https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-150x150.jpg 150w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-300x300.jpg 300w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic.jpg 441w"#}
-{#                                             sizes="(max-width: 24px) 100vw, 24px"> Hans Desjarlais</a></span></span> <span class="posted-on">on#}
-{#                                    <time class="entry-date published" datetime="2014-01-16T23:32:12+00:00">January 16, 2014</time></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                        <div class="col-xs-2 col-sm-2 col-md-2">#}
-{##}
-{#                            <div class="entry-meta pull-right">#}
-{##}
-{#                                <i class="fa fa-comments-o"></i> <span class="comments-link"><a href="https://demo.themely.com/verb/index.php/2014/01/16/nullam-lorem-eros-posuere-nec-gravida-dui/#respond">0</a></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-{##}
-{##}
-{##}
-{#                </header><!-- .entry-header -->#}
-{##}
-{#                <div class="entry-content">#}
-{##}
-{#                    Donec bibendum aliquam nulla sit amet suscipit. Vestibulum in sagittis erat. Ut luctus justo elit, sit amet#}
-{#                    sodales ...#}
-{##}
-{#                </div><!-- .entry-content -->#}
-{##}
-{#            </article><!-- #post-## -->#}
-{##}
-{#            <article id="post-1749" class="col-sm-12 col-md-12 col-lg-6 two-columns-style post-1749 post type-post status-publish format-standard has-post-thumbnail hentry category-featured category-tidbits tag-tidbits">#}
-{##}
-{##}
-{#                <span class="cat cat-title"><span class="cat-links"><a href="https://demo.themely.com/verb/index.php/category/featured/"#}
-{#                         rel="category tag">Featured</a> <a href="https://demo.themely.com/verb/index.php/category/tidbits/" rel="category tag">Tidbits</a></span></span>#}
-{##}
-{##}
-{#                <div class="post-thumbnail">#}
-{##}
-{#                    <div class="hovereffect" data-sr-id="16" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">#}
-{##}
-{#                        <a href="https://demo.themely.com/verb/index.php/2014/01/10/donec-bibendum-aliquam-nulla-sit-amit/" rel="bookmark"><img#}
-{#                             width="800" height="400" src="./../static/tee-800x400.jpg" class="attachment-verb-lite-rectangle size-verb-lite-rectangle wp-post-image"#}
-{#                             alt=""></a>#}
-{##}
-{#                    </div>#}
-{##}
-{#                </div>#}
-{##}
-{#                <header class="entry-header">#}
-{##}
-{#                    <h2 class="entry-title"><a href="https://demo.themely.com/verb/index.php/2014/01/10/donec-bibendum-aliquam-nulla-sit-amit/"#}
-{#                         rel="bookmark">Donec bibendum aliquam nulla sit amit</a></h2>#}
-{##}
-{##}
-{#                    <div class="row">#}
-{##}
-{#                        <div class="col-xs-10 col-sm-10 col-md-10">#}
-{##}
-{#                            <div class="entry-meta">#}
-{##}
-{#                                <span class="byline"> <span class="author vcard"><a class="url" href="https://demo.themely.com/verb/index.php/author/admin/"><img#}
-{#                                             width="24" height="24" src="./../static/about-pic-150x150.jpg"#}
-{#                                             class="avatar avatar-24 photo" alt="" srcset="https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-150x150.jpg 150w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-300x300.jpg 300w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic.jpg 441w"#}
-{#                                             sizes="(max-width: 24px) 100vw, 24px"> Hans Desjarlais</a></span></span> <span class="posted-on">on#}
-{#                                    <time class="entry-date published" datetime="2014-01-10T23:29:29+00:00">January 10, 2014</time></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                        <div class="col-xs-2 col-sm-2 col-md-2">#}
-{##}
-{#                            <div class="entry-meta pull-right">#}
-{##}
-{#                                <i class="fa fa-comments-o"></i> <span class="comments-link"><a href="https://demo.themely.com/verb/index.php/2014/01/10/donec-bibendum-aliquam-nulla-sit-amit/#comments">1</a></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-{##}
-{##}
-{##}
-{#                </header><!-- .entry-header -->#}
-{##}
-{#                <div class="entry-content">#}
-{##}
-{#                    Donec bibendum aliquam nulla sit amet suscipit. Vestibulum in sagittis erat. Ut luctus justo elit, sit amet#}
-{#                    sodales ...#}
-{##}
-{#                </div><!-- .entry-content -->#}
-{##}
-{#            </article><!-- #post-## -->#}
-{##}
-{#            <article id="post-1648" class="col-sm-12 col-md-12 col-lg-6 two-columns-style post-1648 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-fashion">#}
-{##}
-{##}
-{#                <span class="cat cat-title"><span class="cat-links"><a href="https://demo.themely.com/verb/index.php/category/fashion/"#}
-{#                         rel="category tag">Fashion</a></span></span>#}
-{##}
-{##}
-{#                <div class="post-thumbnail">#}
-{##}
-{#                    <div class="hovereffect" data-sr-id="17" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">#}
-{##}
-{#                        <a href="https://demo.themely.com/verb/index.php/2013/12/31/porta-tortor-ut-sit-amet/" rel="bookmark"><img#}
-{#                             width="800" height="400" src="./../static/pexels-photo-87293-800x400.jpeg"#}
-{#                             class="attachment-verb-lite-rectangle size-verb-lite-rectangle wp-post-image" alt=""></a>#}
-{##}
-{#                    </div>#}
-{##}
-{#                </div>#}
-{##}
-{#                <header class="entry-header">#}
-{##}
-{#                    <h2 class="entry-title"><a href="https://demo.themely.com/verb/index.php/2013/12/31/porta-tortor-ut-sit-amet/"#}
-{#                         rel="bookmark">Porta Tortor: Ut sit amet aenean enim diam</a></h2>#}
-{##}
-{##}
-{#                    <div class="row">#}
-{##}
-{#                        <div class="col-xs-10 col-sm-10 col-md-10">#}
-{##}
-{#                            <div class="entry-meta">#}
-{##}
-{#                                <span class="byline"> <span class="author vcard"><a class="url" href="https://demo.themely.com/verb/index.php/author/admin/"><img#}
-{#                                             width="24" height="24" src="./../static/about-pic-150x150.jpg"#}
-{#                                             class="avatar avatar-24 photo" alt="" srcset="https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-150x150.jpg 150w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-300x300.jpg 300w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic.jpg 441w"#}
-{#                                             sizes="(max-width: 24px) 100vw, 24px"> Hans Desjarlais</a></span></span> <span class="posted-on">on#}
-{#                                    <time class="entry-date published" datetime="2013-12-31T00:01:57+00:00">December 31, 2013</time></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                        <div class="col-xs-2 col-sm-2 col-md-2">#}
-{##}
-{#                            <div class="entry-meta pull-right">#}
-{##}
-{#                                <i class="fa fa-comments-o"></i> <span class="comments-link"><a href="https://demo.themely.com/verb/index.php/2013/12/31/porta-tortor-ut-sit-amet/#respond">0</a></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-{##}
-{##}
-{##}
-{#                </header><!-- .entry-header -->#}
-{##}
-{#                <div class="entry-content">#}
-{##}
-{#                    Maecenas nulla metus, consectetur et vulputate in, lacinia ut elit. Maecenas vestibulum interdum nisi, a#}
-{#                    varius felis eleifend ...#}
-{##}
-{#                </div><!-- .entry-content -->#}
-{##}
-{#            </article><!-- #post-## -->#}
-{##}
-{#            <article id="post-1165" class="col-sm-12 col-md-12 col-lg-6 two-columns-style post-1165 post type-post status-publish format-standard has-post-thumbnail hentry category-tidbits tag-tidbits">#}
-{##}
-{##}
-{#                <span class="cat cat-title"><span class="cat-links"><a href="https://demo.themely.com/verb/index.php/category/tidbits/"#}
-{#                         rel="category tag">Tidbits</a></span></span>#}
-{##}
-{##}
-{#                <div class="post-thumbnail">#}
-{##}
-{#                    <div class="hovereffect" data-sr-id="18" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">#}
-{##}
-{#                        <a href="https://demo.themely.com/verb/index.php/2013/12/22/aenean-enim-mi-iaculis-sit/" rel="bookmark"><img#}
-{#                             width="800" height="400" src="./../static/outside-800x400.jpg" class="attachment-verb-lite-rectangle size-verb-lite-rectangle wp-post-image"#}
-{#                             alt=""></a>#}
-{##}
-{#                    </div>#}
-{##}
-{#                </div>#}
-{##}
-{#                <header class="entry-header">#}
-{##}
-{#                    <h2 class="entry-title"><a href="https://demo.themely.com/verb/index.php/2013/12/22/aenean-enim-mi-iaculis-sit/"#}
-{#                         rel="bookmark">Aenean enim mi iaculis sit varius felis eleifend</a></h2>#}
-{##}
-{##}
-{#                    <div class="row">#}
-{##}
-{#                        <div class="col-xs-10 col-sm-10 col-md-10">#}
-{##}
-{#                            <div class="entry-meta">#}
-{##}
-{#                                <span class="byline"> <span class="author vcard"><a class="url" href="https://demo.themely.com/verb/index.php/author/janedoe/"><img#}
-{#                                             width="24" height="24" src="./../static/about-pic2-150x150.jpg"#}
-{#                                             class="avatar avatar-24 photo" alt="" srcset="https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic2-150x150.jpg 150w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic2-300x300.jpg 300w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic2.jpg 441w"#}
-{#                                             sizes="(max-width: 24px) 100vw, 24px"> Jane Doe</a></span></span> <span class="posted-on">on <time#}
-{#                                     class="entry-date published" datetime="2013-12-22T18:23:05+00:00">December 22, 2013</time></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                        <div class="col-xs-2 col-sm-2 col-md-2">#}
-{##}
-{#                            <div class="entry-meta pull-right">#}
-{##}
-{#                                <i class="fa fa-comments-o"></i> <span class="comments-link"><a href="https://demo.themely.com/verb/index.php/2013/12/22/aenean-enim-mi-iaculis-sit/#respond">0</a></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-{##}
-{##}
-{##}
-{#                </header><!-- .entry-header -->#}
-{##}
-{#                <div class="entry-content">#}
-{##}
-{#                    Maecenas vestibulum interdum nisi, a varius felis eleifend ac. Aenean enim mi, iaculis sit amet diam sit#}
-{#                    amet, ...#}
-{#                    <div class="page-links">Pages: <a href="https://demo.themely.com/verb/index.php/2013/12/22/aenean-enim-mi-iaculis-sit/">1</a>#}
-{#                        <a href="https://demo.themely.com/verb/index.php/2013/12/22/aenean-enim-mi-iaculis-sit/2/">2</a></div>#}
-{#                </div><!-- .entry-content -->#}
-{##}
-{#            </article><!-- #post-## -->#}
-{##}
-{#            <article id="post-842" class="col-sm-12 col-md-12 col-lg-6 two-columns-style post-842 post type-post status-publish format-standard has-post-thumbnail hentry category-world-news tag-news">#}
-{##}
-{##}
-{#                <span class="cat cat-title"><span class="cat-links"><a href="https://demo.themely.com/verb/index.php/category/world-news/"#}
-{#                         rel="category tag">World News</a></span></span>#}
-{##}
-{##}
-{#                <div class="post-thumbnail">#}
-{##}
-{#                    <div class="hovereffect" data-sr-id="19" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">#}
-{##}
-{#                        <a href="https://demo.themely.com/verb/index.php/2013/12/21/mauris-nunc-ipsum-varius-ac/" rel="bookmark"><img#}
-{#                             width="800" height="400" src="./../static/default1-800x400.jpg"#}
-{#                             class="attachment-verb-lite-rectangle size-verb-lite-rectangle wp-post-image" alt=""></a>#}
-{##}
-{#                    </div>#}
-{##}
-{#                </div>#}
-{##}
-{#                <header class="entry-header">#}
-{##}
-{#                    <h2 class="entry-title"><a href="https://demo.themely.com/verb/index.php/2013/12/21/mauris-nunc-ipsum-varius-ac/"#}
-{#                         rel="bookmark">Mauris Nunc Ipsum: Varius ac tempus tellus</a></h2>#}
-{##}
-{##}
-{#                    <div class="row">#}
-{##}
-{#                        <div class="col-xs-10 col-sm-10 col-md-10">#}
-{##}
-{#                            <div class="entry-meta">#}
-{##}
-{#                                <span class="byline"> <span class="author vcard"><a class="url" href="https://demo.themely.com/verb/index.php/author/admin/"><img#}
-{#                                             width="24" height="24" src="./../static/about-pic-150x150.jpg"#}
-{#                                             class="avatar avatar-24 photo" alt="" srcset="https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-150x150.jpg 150w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-300x300.jpg 300w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic.jpg 441w"#}
-{#                                             sizes="(max-width: 24px) 100vw, 24px"> Hans Desjarlais</a></span></span> <span class="posted-on">on#}
-{#                                    <time class="entry-date published" datetime="2013-12-21T23:59:57+00:00">December 21, 2013</time></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                        <div class="col-xs-2 col-sm-2 col-md-2">#}
-{##}
-{#                            <div class="entry-meta pull-right">#}
-{##}
-{#                                <i class="fa fa-comments-o"></i> <span class="comments-link"><a href="https://demo.themely.com/verb/index.php/2013/12/21/mauris-nunc-ipsum-varius-ac/#respond">0</a></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-{##}
-{##}
-{##}
-{#                </header><!-- .entry-header -->#}
-{##}
-{#                <div class="entry-content">#}
-{##}
-{#                    Proin tincidunt velit turpis. Ut eu tempus tellus, vel dapibus sem&nbsp;&nbsp;ultrices sollicitudin justo#}
-{#                    lorem sit amit. Proin vitae ...#}
-{##}
-{#                </div><!-- .entry-content -->#}
-{##}
-{#            </article><!-- #post-## -->#}
-{##}
-{#            <article id="post-1072" class="col-sm-12 col-md-12 col-lg-6 two-columns-style post-1072 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-fashion">#}
-{##}
-{##}
-{#                <span class="cat cat-title"><span class="cat-links"><a href="https://demo.themely.com/verb/index.php/category/fashion/"#}
-{#                         rel="category tag">Fashion</a></span></span>#}
-{##}
-{##}
-{#                <div class="post-thumbnail">#}
-{##}
-{#                    <div class="hovereffect" data-sr-id="20" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">#}
-{##}
-{#                        <a href="https://demo.themely.com/verb/index.php/2013/12/21/mauris-diam-arcu/" rel="bookmark"><img width="800"#}
-{#                             height="400" src="./../static/couple-800x400.jpg" class="attachment-verb-lite-rectangle size-verb-lite-rectangle wp-post-image"#}
-{#                             alt=""></a>#}
-{##}
-{#                    </div>#}
-{##}
-{#                </div>#}
-{##}
-{#                <header class="entry-header">#}
-{##}
-{#                    <h2 class="entry-title"><a href="https://demo.themely.com/verb/index.php/2013/12/21/mauris-diam-arcu/" rel="bookmark">Mauris#}
-{#                            diam arcu varius felis</a></h2>#}
-{##}
-{##}
-{#                    <div class="row">#}
-{##}
-{#                        <div class="col-xs-10 col-sm-10 col-md-10">#}
-{##}
-{#                            <div class="entry-meta">#}
-{##}
-{#                                <span class="byline"> <span class="author vcard"><a class="url" href="https://demo.themely.com/verb/index.php/author/admin/"><img#}
-{#                                             width="24" height="24" src="./../static/about-pic-150x150.jpg"#}
-{#                                             class="avatar avatar-24 photo" alt="" srcset="https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-150x150.jpg 150w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic-300x300.jpg 300w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic.jpg 441w"#}
-{#                                             sizes="(max-width: 24px) 100vw, 24px"> Hans Desjarlais</a></span></span> <span class="posted-on">on#}
-{#                                    <time class="entry-date published" datetime="2013-12-21T01:58:57+00:00">December 21, 2013</time></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                        <div class="col-xs-2 col-sm-2 col-md-2">#}
-{##}
-{#                            <div class="entry-meta pull-right">#}
-{##}
-{#                                <i class="fa fa-comments-o"></i> <span class="comments-link"><a href="https://demo.themely.com/verb/index.php/2013/12/21/mauris-diam-arcu/#respond">0</a></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-{##}
-{##}
-{##}
-{#                </header><!-- .entry-header -->#}
-{##}
-{#                <div class="entry-content">#}
-{##}
-{#                    Lorem ipsum dolor sit amet, proin pretium error nec etiam, amet turpis ipsum ultrices, tincidunt suscipit a#}
-{#                    massa, ...#}
-{##}
-{#                </div><!-- .entry-content -->#}
-{##}
-{#            </article><!-- #post-## -->#}
-{##}
-{#            <article id="post-831" class="col-sm-12 col-md-12 col-lg-6 two-columns-style post-831 post type-post status-publish format-standard has-post-thumbnail hentry category-cuisines tag-cuisine tag-food">#}
-{##}
-{##}
-{#                <span class="cat cat-title"><span class="cat-links"><a href="https://demo.themely.com/verb/index.php/category/cuisines/"#}
-{#                         rel="category tag">Cuisines</a></span></span>#}
-{##}
-{##}
-{#                <div class="post-thumbnail">#}
-{##}
-{#                    <div class="hovereffect" data-sr-id="21" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">#}
-{##}
-{#                        <a href="https://demo.themely.com/verb/index.php/2013/12/19/ut-luctus-justo-elit-sit-amet/" rel="bookmark"><img#}
-{#                             width="800" height="400" src="./../static/pexels-photo-24798-800x400.jpg"#}
-{#                             class="attachment-verb-lite-rectangle size-verb-lite-rectangle wp-post-image" alt=""></a>#}
-{##}
-{#                    </div>#}
-{##}
-{#                </div>#}
-{##}
-{#                <header class="entry-header">#}
-{##}
-{#                    <h2 class="entry-title"><a href="https://demo.themely.com/verb/index.php/2013/12/19/ut-luctus-justo-elit-sit-amet/"#}
-{#                         rel="bookmark">Ut Luctus Justo elit viverra sagittis</a></h2>#}
-{##}
-{##}
-{#                    <div class="row">#}
-{##}
-{#                        <div class="col-xs-10 col-sm-10 col-md-10">#}
-{##}
-{#                            <div class="entry-meta">#}
-{##}
-{#                                <span class="byline"> <span class="author vcard"><a class="url" href="https://demo.themely.com/verb/index.php/author/janedoe/"><img#}
-{#                                             width="24" height="24" src="./../static/about-pic2-150x150.jpg"#}
-{#                                             class="avatar avatar-24 photo" alt="" srcset="https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic2-150x150.jpg 150w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic2-300x300.jpg 300w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic2.jpg 441w"#}
-{#                                             sizes="(max-width: 24px) 100vw, 24px"> Jane Doe</a></span></span> <span class="posted-on">on <time#}
-{#                                     class="entry-date published" datetime="2013-12-19T15:20:31+00:00">December 19, 2013</time></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                        <div class="col-xs-2 col-sm-2 col-md-2">#}
-{##}
-{#                            <div class="entry-meta pull-right">#}
-{##}
-{#                                <i class="fa fa-comments-o"></i> <span class="comments-link"><a href="https://demo.themely.com/verb/index.php/2013/12/19/ut-luctus-justo-elit-sit-amet/#respond">0</a></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-{##}
-{##}
-{##}
-{#                </header><!-- .entry-header -->#}
-{##}
-{#                <div class="entry-content">#}
-{##}
-{#                    Donec bibendum aliquam nulla sit amet suscipit. Vestibulum in sagittis erat. Ut luctus justo elit, sit amet#}
-{#                    sodales ...#}
-{##}
-{#                </div><!-- .entry-content -->#}
-{##}
-{#            </article><!-- #post-## -->#}
-{##}
-{#            <article id="post-993" class="col-sm-12 col-md-12 col-lg-6 two-columns-style post-993 post type-post status-publish format-standard has-post-thumbnail hentry category-reviews tag-music tag-reviews">#}
-{##}
-{##}
-{#                <span class="cat cat-title"><span class="cat-links"><a href="https://demo.themely.com/verb/index.php/category/reviews/"#}
-{#                         rel="category tag">Reviews</a></span></span>#}
-{##}
-{##}
-{#                <div class="post-thumbnail">#}
-{##}
-{#                    <div class="hovereffect" data-sr-id="22" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">#}
-{##}
-{#                        <a href="https://demo.themely.com/verb/index.php/2013/12/19/review-with-top-box/" rel="bookmark"><img width="800"#}
-{#                             height="400" src="./../static/technology-music-sound-things-800x400.jpg"#}
-{#                             class="attachment-verb-lite-rectangle size-verb-lite-rectangle wp-post-image" alt=""></a>#}
-{##}
-{#                    </div>#}
-{##}
-{#                </div>#}
-{##}
-{#                <header class="entry-header">#}
-{##}
-{#                    <h2 class="entry-title"><a href="https://demo.themely.com/verb/index.php/2013/12/19/review-with-top-box/" rel="bookmark">Laoreet#}
-{#                            Sed: Suscipit nec dapibus at elit</a></h2>#}
-{##}
-{##}
-{#                    <div class="row">#}
-{##}
-{#                        <div class="col-xs-10 col-sm-10 col-md-10">#}
-{##}
-{#                            <div class="entry-meta">#}
-{##}
-{#                                <span class="byline"> <span class="author vcard"><a class="url" href="https://demo.themely.com/verb/index.php/author/johndoe/"><img#}
-{#                                             width="24" height="24" src="./../static/about-pic3-150x150.jpg"#}
-{#                                             class="avatar avatar-24 photo" alt="" srcset="https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic3-150x150.jpg 150w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic3-300x300.jpg 300w, https://demo.themely.com/verb/wp-content/uploads/2016/12/about-pic3.jpg 441w"#}
-{#                                             sizes="(max-width: 24px) 100vw, 24px"> John Doe</a></span></span> <span class="posted-on">on <time#}
-{#                                     class="entry-date published" datetime="2013-12-19T03:38:18+00:00">December 19, 2013</time></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                        <div class="col-xs-2 col-sm-2 col-md-2">#}
-{##}
-{#                            <div class="entry-meta pull-right">#}
-{##}
-{#                                <i class="fa fa-comments-o"></i> <span class="comments-link"><a href="https://demo.themely.com/verb/index.php/2013/12/19/review-with-top-box/#respond">0</a></span>#}
-{#                            </div><!-- .entry-meta -->#}
-{##}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-{##}
-{##}
-{##}
-{#                </header><!-- .entry-header -->#}
-{##}
-{#                <div class="entry-content">#}
-{##}
-{#                    Proin tristique elit et augue varius pellentesque. Donec enim neque, vulputate et commodo in, tristique sed#}
-{#                    velit. Phasellus ...#}
-{##}
-{#                </div><!-- .entry-content -->#}
-{##}
-{#            </article><!-- #post-## -->#}
-
-            <div class="clearfix"></div>
+                <!-- Superfish Menu -->
+                <div class="menu-main-menu-container">
+                    <ul id="menu-main-menu" class="sf-menu" type="1">
+                        <li id="menu-item-1949">
+                            <a style="font-size: 22px"  href="/main?nav=recommend">主页</a>
+                        </li>
+                        <li id="menu-item-200" >
+                            <a  style="font-size: 22px" href="/main?nav=campusnews">校园新闻</a>
+                        </li>
+                        <li id="menu-item-2000" >
+                            <a  style="font-size: 22px" href="/main?nav=media">媒体重大</a>
+                        </li>
+                        <li id="menu-item-1989" >
+                            <a  style="font-size: 22px" href="/main?nav=notice">通知公告</a>
+                        </li>
+{#                        <li id="menu-item-1988" >#}
+{#                            <a  style="font-size: 22px" href="/main?nav=academinfo">学术通告</a>#}
+{#                        </li>#}
+                        <li id="menu-item-2010" >
+                            <a  style="font-size: 22px" href="/main?nav=instnews">学院新闻</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav><!-- .site-navigation -->
 
 
-            <div class="post-nav">
-                <ul class="pager">
-                    {% if newslist.has_previous %}
-                        <li class="previous"><a href="/main?page=1">第一页</a></li>
-                    <li><a href="/main?page={{ newslist.previous_page_number}}"}} title="previous">上一页</a></li>
-                    {% endif %}
-                
-                    {% for page in pageList %}
-                        {% if page == pagenum %}
-                            <li class="active"><span class="active">{{ page }}</span></li>
-                        {% else %}
-                            <li><a href="/main?page={{ page }}">{{ page }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                    
+        </div>
 
-
-                    {% if newslist.has_next %}
-                        <li><a href="/main?page={{ newslist.next_page_number }}" title="next">下一页</a></li>
-                        <li class="next"><a href="/main?page={{ finalpage }}">最后一页</a></li>
-                    {% endif %}
-
-                </ul>
-            </div>
-
-
-
-        </main><!-- #main -->
-
-    </div><!-- #primary -->
+    </div><!-- .wrapper-navbar end -->
 
 {% endblock %}
+
+{# 左边主要内容部分 #}
+{% block left %}
+
+    <div id="primary" class="col-md-8 content-area" style="max-width: 1500px; overflow: hidden;">
+            <main id="main" class="site-main row multi-columns-row" role="main">
+                    {% if inserthtml != '' %}
+                        {{ inserthtml |safe}}
+
+                        {% else %}
+                            {% if newstype == 'recommend' or newstype == 'campusnews' or newstype == 'media' %}
+                                {% include 'recommend.html' %}
+                            {% endif %}
+
+                            {% if newstype == 'notice' %}
+                                {% include 'notice.html' %}
+                            {% endif %}
+
+                            {% if newstype == 'instnews' %}
+                                {% include 'instnews.html' %}
+                            {% endif %}
+                    {% endif %}
+            </main><!-- #main -->
+
+    </div>
+{% endblock %}
+
+{# 右边分栏 #}
+{% block right %}
+    <div id="secondary" class="col-md-4 widget-area" role="complementary" style="margin-left: 50px; width: 400px;">
+
+    <aside id="verb_lite_sponsors-3" class="widget wcp_image center-block sponsor">
+        <h3>This is a custom advertisement widget included in the theme</h3>
+        <div class="text-center margin-bottom-20"><a target="_blank" href="https://www.themely.com/themes/verb/" class="btn btn-sm btn-primary">Download
+                Verb Pro</a></div><a target="_blank" href="https://www.themely.com/themes/verb/"><img src="./../static/screenshot.png"
+             class="img-responsive center-block"></a>
+    </aside>
+    <aside id="search-2" class="widget widget_search">
+        <form method="get" id="searchform" action="https://demo.themely.com/verb/" role="search">
+            <label for="s" class="assistive-text">Search</label>
+            <div class="input-group">
+                <input type="text" class="field form-control" name="s" id="s" placeholder="Search …">
+                <span class="input-group-btn">
+                    <input type="submit" class="submit btn btn-primary" name="submit" id="searchsubmit" value="Search">
+                </span>
+            </div>
+        </form>
+    </aside>
+    <aside id="wpp-2" class="widget popular-posts">
+        <h3 class="widget-title">热门新闻</h3>
+        <!-- WordPress Popular Posts -->
+
+        <ul class="wpp-list wpp-list-with-thumbnails">
+            <li data-sr-id="23" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">
+                <a href="https://demo.themely.com/verb/index.php/2013/12/12/aliquam-faucibus-lacinia-facilisis/" title="Aliquam faucibus lacinia facilisis"
+                 target="_self"><img width="100" height="75" src="./../static/pexels-photo-100x75.jpg"
+                     class="wpp-thumbnail wpp_featured_stock wp-post-image" alt="" srcset="https://demo.themely.com/verb/wp-content/uploads/2013/12/pexels-photo-100x75.jpg 100w, https://demo.themely.com/verb/wp-content/uploads/2013/12/pexels-photo-680x500.jpg 680w, https://demo.themely.com/verb/wp-content/uploads/2013/12/pexels-photo-935x700.jpg 935w"
+                     sizes="(max-width: 100px) 100vw, 100px"></a>
+                <a href="https://demo.themely.com/verb/index.php/2013/12/12/aliquam-faucibus-lacinia-facilisis/" title="Aliquam faucibus lacinia facilisis"
+                 class="wpp-post-title" target="_self">Aliquam faucibus lacinia facilisis</a>
+                <span class="wpp-meta post-stats"><span class="wpp-views">4 views</span> | <span class="wpp-date">posted on
+                        December 12, 2013</span></span>
+            </li>
+            <li data-sr-id="24" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">
+                <a href="https://demo.themely.com/verb/index.php/2013/10/20/quisque-turpis-arcu-congue-in-tincidunt/" title="Quisque turpis arcu, congue in tincidunt"
+                 target="_self"><img width="100" height="75" src="./../static/photo-1430213501427-c640a8880f78-100x75.jpg"
+                     class="wpp-thumbnail wpp_featured_stock wp-post-image" alt="" srcset="https://demo.themely.com/verb/wp-content/uploads/2013/10/photo-1430213501427-c640a8880f78-100x75.jpg 100w, https://demo.themely.com/verb/wp-content/uploads/2013/10/photo-1430213501427-c640a8880f78-680x500.jpg 680w, https://demo.themely.com/verb/wp-content/uploads/2013/10/photo-1430213501427-c640a8880f78-935x700.jpg 935w"
+                     sizes="(max-width: 100px) 100vw, 100px"></a>
+                <a href="https://demo.themely.com/verb/index.php/2013/10/20/quisque-turpis-arcu-congue-in-tincidunt/" title="Quisque turpis arcu, congue in tincidunt"
+                 class="wpp-post-title" target="_self">Quisque turpis arcu, congue in tincidunt</a>
+                <span class="wpp-meta post-stats"><span class="wpp-views">4 views</span> | <span class="wpp-date">posted on
+                        October 20, 2013</span></span>
+            </li>
+            <li data-sr-id="25" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">
+                <a href="https://demo.themely.com/verb/index.php/2014/12/22/aliquam-faucibus-lacinia/" title="Aliquam faucibus lacinia interdum nisi"
+                 target="_self"><img width="100" height="75" src="./../static/4yas-4415263267_3c62eecb99_o-100x75.jpg"
+                     class="wpp-thumbnail wpp_featured_stock wp-post-image" alt="Aliquam faucibus lacinia interdum nisi" srcset="https://demo.themely.com/verb/wp-content/uploads/2013/12/4yas-4415263267_3c62eecb99_o-100x75.jpg 100w, https://demo.themely.com/verb/wp-content/uploads/2013/12/4yas-4415263267_3c62eecb99_o-680x500.jpg 680w, https://demo.themely.com/verb/wp-content/uploads/2013/12/4yas-4415263267_3c62eecb99_o-935x700.jpg 935w"
+                     sizes="(max-width: 100px) 100vw, 100px"></a>
+                <a href="https://demo.themely.com/verb/index.php/2014/12/22/aliquam-faucibus-lacinia/" title="Aliquam faucibus lacinia interdum nisi"
+                 class="wpp-post-title" target="_self">Aliquam faucibus lacinia interdum nisi</a>
+                <span class="wpp-meta post-stats"><span class="wpp-views">4 views</span> | <span class="wpp-date">posted on
+                        December 22, 2014</span></span>
+            </li>
+            <li data-sr-id="26" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">
+                <a href="https://demo.themely.com/verb/index.php/2014/01/10/donec-bibendum-aliquam-nulla-sit-amit/" title="Donec bibendum aliquam nulla sit amit"
+                 target="_self"><img width="100" height="75" src="./../static/tee-100x75.jpg"
+                     class="wpp-thumbnail wpp_featured_stock wp-post-image" alt="" srcset="https://demo.themely.com/verb/wp-content/uploads/2016/11/tee-100x75.jpg 100w, https://demo.themely.com/verb/wp-content/uploads/2016/11/tee-680x500.jpg 680w, https://demo.themely.com/verb/wp-content/uploads/2016/11/tee-935x700.jpg 935w"
+                     sizes="(max-width: 100px) 100vw, 100px"></a>
+                <a href="https://demo.themely.com/verb/index.php/2014/01/10/donec-bibendum-aliquam-nulla-sit-amit/" title="Donec bibendum aliquam nulla sit amit"
+                 class="wpp-post-title" target="_self">Donec bibendum aliquam nulla sit amit</a>
+                <span class="wpp-meta post-stats"><span class="wpp-views">3 views</span> | <span class="wpp-date">posted on
+                        January 10, 2014</span></span>
+            </li>
+            <li data-sr-id="27" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">
+                <a href="https://demo.themely.com/verb/index.php/2013/12/16/fusce-pretium-id-sem-non-feugiat-ultricies/"
+                 title="Fusce pretium id sem non feugiat ultricies" target="_self"><img width="100" height="75" src="./../static/building-vintage-bike-monument-100x75.jpg"
+                     class="wpp-thumbnail wpp_featured_stock wp-post-image" alt="" srcset="https://demo.themely.com/verb/wp-content/uploads/2013/12/building-vintage-bike-monument-100x75.jpg 100w, https://demo.themely.com/verb/wp-content/uploads/2013/12/building-vintage-bike-monument-680x500.jpg 680w, https://demo.themely.com/verb/wp-content/uploads/2013/12/building-vintage-bike-monument-935x700.jpg 935w"
+                     sizes="(max-width: 100px) 100vw, 100px"></a>
+                <a href="https://demo.themely.com/verb/index.php/2013/12/16/fusce-pretium-id-sem-non-feugiat-ultricies/"
+                 title="Fusce pretium id sem non feugiat ultricies" class="wpp-post-title" target="_self">Fusce pretium id
+                    sem non feugiat ultricies</a>
+                <span class="wpp-meta post-stats"><span class="wpp-views">2 views</span> | <span class="wpp-date">posted on
+                        December 16, 2013</span></span>
+            </li>
+        </ul>
+
+    </aside>
+    <aside id="recent-posts-2" class="widget widget_recent_entries">
+        <h3 class="widget-title">通知公告</h3>
+        <ul>
+            <li>
+                <a href="https://demo.themely.com/verb/index.php/2014/12/22/aliquam-faucibus-lacinia/">Aliquam faucibus
+                    lacinia interdum nisi</a>
+            </li>
+            <li>
+                <a href="https://demo.themely.com/verb/index.php/2014/06/19/review-with-bottom-box/">Facilisis tincidunt
+                    justo eget urna leo dapibus</a>
+            </li>
+            <li>
+                <a href="https://demo.themely.com/verb/index.php/2014/01/16/nullam-lorem-eros-posuere-nec-gravida-dui/">Nullam
+                    lorem eros, posuere nec gravida dui</a>
+            </li>
+            <li>
+                <a href="https://demo.themely.com/verb/index.php/2014/01/10/donec-bibendum-aliquam-nulla-sit-amit/">Donec
+                    bibendum aliquam nulla sit amit</a>
+            </li>
+            <li>
+                <a href="https://demo.themely.com/verb/index.php/2013/12/31/porta-tortor-ut-sit-amet/">Porta Tortor: Ut sit
+                    amet aenean enim diam</a>
+            </li>
+        </ul>
+    </aside>
+    <aside id="recent-comments-2" class="widget widget_recent_comments">
+        <h3 class="widget-title">最近浏览</h3>
+        <ul id="recentcomments">
+            <li class="recentcomments"><span class="comment-author-link"><a href="https://demo.themely.com/verb/#" rel="external nofollow"
+                     class="url">Jon Doe</a></span> on <a href="https://demo.themely.com/verb/index.php/2014/01/10/donec-bibendum-aliquam-nulla-sit-amit/#comment-25">Donec
+                    bibendum aliquam nulla sit amit</a></li>
+            <li class="recentcomments"><span class="comment-author-link"><a href="http://theme-sphere.com/" rel="external nofollow"
+                     class="url">Jane Doe</a></span> on <a href="https://demo.themely.com/verb/index.php/2013/12/16/nullam-porta-tortor-ut-vulputate-mattis/#comment-14">Nullam
+                    porta tortor sed vivamus felis URS libero</a></li>
+            <li class="recentcomments"><span class="comment-author-link"><a href="http://www.blah.com/" rel="external nofollow"
+                     class="url">John Doe</a></span> on <a href="https://demo.themely.com/verb/index.php/2013/12/16/donec-porta-molestie-dui-molestie/#comment-12">Donec
+                    porta molestie $4bn vitae molestie metus</a></li>
+            <li class="recentcomments"><span class="comment-author-link"><a href="http://theme-sphere.com/" rel="external nofollow"
+                     class="url">Jane Doe</a></span> on <a href="https://demo.themely.com/verb/index.php/2013/12/16/fusce-pretium-id-sem-non-feugiat-ultricies/#comment-4">Fusce
+                    pretium id sem non feugiat ultricies</a></li>
+            <li class="recentcomments"><span class="comment-author-link"><a href="http://theme-sphere.com/" rel="external nofollow"
+                     class="url">Jane Doe</a></span> on <a href="https://demo.themely.com/verb/index.php/2013/12/16/fusce-pretium-id-sem-non-feugiat-ultricies/#comment-3">Fusce
+                    pretium id sem non feugiat ultricies</a></li>
+        </ul>
+    </aside>
+    </div><!-- .widget-area -->
+
+{% endblock %}
+
+

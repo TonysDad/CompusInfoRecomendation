@@ -3,9 +3,17 @@
 <html lang="en-US">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="/">
+
+{#        校园网站的css#}
+{#        <link href="./../static/css/normalize.css" rel="stylesheet" media="all">#}
+{#        <link href="./../static/css/base.css" rel="stylesheet" media="all">#}
+{#        <link href="./../static/css/2015.css" rel="stylesheet" media="all">#}
+
+
 		<link rel="profile" href="https://gmpg.org/xfn/11">
 		<!-- <link rel="pingback" href="https://demo.themely.com/verb/xmlrpc.php">
  -->
@@ -88,7 +96,7 @@
 				padding: 0 !important;
 			}
 		</style>
-		<link rel="stylesheet" id="contact-form-7-css" href="./../styles.css"
+		<link rel="stylesheet" id="contact-form-7-css" href="./../static/css/styles.css"
 		 type="text/css" media="all">
 		<link rel="stylesheet" id="wordpress-popular-posts-css-css" href="./../static/css/wpp.css"
 		 type="text/css" media="all">
@@ -100,7 +108,7 @@
 		 type="text/css" media="all">
 		<link rel="stylesheet" id="verb-lite-bootstrapselect-css" href="./../static/css/bootstrap-select.min.css"
 		 type="text/css" media="all">
-		<link rel="stylesheet" id="verb-lite-google-fonts-css" href="./../static/css/css"
+		<link rel="stylesheet" id="verb-lite-google-fonts-css" href="./../static/css/font.css"
 		 type="text/css" media="all">
 		<link rel="stylesheet" id="verb-lite-scrollreveal-css" href="./../static/css/scrollreveal.css"
 		 type="text/css" media="all">
@@ -345,12 +353,15 @@
 
 			</div>
 
-			    {% include 'nav.html' %}
+{#			    {% include 'nav.html' %}#}
+                {% block nav %}
+
+                {% endblock %}
 
 
 			<div class="wrapper" id="wrapper-index">
 
-				<div id="content" class="container">
+				<div id="content" class="container" style="max-width: 1400px;">
 
 					<div class="row">
 
@@ -360,7 +371,10 @@
 {#                        {% include 'left.html' %}#}
 
 
-                        {% include 'right.html' %}
+                        {% block right %}
+
+                        {% endblock %}
+
 
 					</div><!-- .row -->
 
@@ -480,9 +494,6 @@
 				return false;
 			});
 		</script>
-
-
-
 
 
 		</body>
