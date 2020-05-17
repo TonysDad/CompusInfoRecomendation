@@ -7,8 +7,9 @@ from django.core.paginator import Paginator
 
 from Apps.models import News
 from Apps.models import User
-from Apps.gethtml import getcontent
+from Apps.gethtml import *
 from Apps.models import AllNews
+
 
 # Create your views here.
 def mainpage(request):
@@ -20,26 +21,43 @@ def mainpage(request):
 	#得到需要显示的新闻种类
 	newstype = request.GET.get('nav','recommend')
 
+	ifsearch = request.GET.get('submit','no')
+	if ifsearch != 'no':
+		text = request.GET.get('search_text','')
+		print(text)
+
+	#通过文件读取得到当前登录的用户，传参太麻烦了
+	username= request.GET.get('username','')
+	if username != '':
+		with open('Apps/username.txt','w') as f:
+			f.write(username)
+	else:
+		with open('Apps/username.txt','r') as f:
+			username = f.read()
+
+
+	#得到所有新闻信息
+	recommend_news = Get_Recommend_News(username)
+	recently_views = Get_Recently_View(username)
+	notice = Get_Notice()
+	hot_topic = Get_HotTopic()
+
 	#showcontent表示是否为展示内容的页面,0则不是详细新闻页面
 	inserthtml = ''
 	showcontent = request.GET.get('content','0')
 
 	if showcontent == '1':
 		link = request.GET.get('link','null')  #得到新闻链接
-		inserthtml = getcontent(link)   #需要插入的html元素
-		print((inserthtml))
-		return render(request,'main.html',{'inserthtml':inserthtml})
-
-	#通过url得到当前登录的用户
-	url = request.get_full_path()
-	username = url.split('=')[-1]
+		htmlcontent = getcontent(link)   #需要插入的html元素
+		# print((inserthtml))
+		inserthtml = htmlcontent['content']
+		date = htmlcontent['date']
+		title = htmlcontent['title']
+		abstract = htmlcontent['abstract']
+		return render(request,'main.html',{'inserthtml':inserthtml,'date':date,'title':title,'newstype':newstype,
+		                                   'abstract':abstract,'link':link,'recently_views':recently_views,
+		                                   'notice':notice,'hot_topic':hot_topic})
 	print(username)
-
-	#得到所有新闻信息
-	recommend_news = Get_Recommend_News(username)
-	recently_news = Get_Recently_View(username)
-	notice = Get_Notice()
-	hotTopic = Get_HotTopic()
 
 
 	#创建分页对象
@@ -58,7 +76,8 @@ def mainpage(request):
 
 	return render(request,'main.html',{'newslist':perPageList,'pageList':pagelist,'pagenum':num,
 	                                   'finalpage':pageObj.num_pages,'newstype':newstype,
-	                                   'inserthtml':inserthtml})
+	                                   'inserthtml':inserthtml,'recently_views':recently_views,
+		                                   'notice':notice,'hot_topic':hot_topic})
 
 #根据用户名推荐信息
 def Get_Recommend_News(username):
@@ -66,15 +85,15 @@ def Get_Recommend_News(username):
 
 #得到用户最近浏览
 def Get_Recently_View(username):
-	return News.objects.all()
+	return News.objects.all()[0:8]
 
 #得到热门信息
 def Get_HotTopic():
-	return News.objects.all()
+	return News.objects.all()[0:8]
 
 #得到通知公告
 def Get_Notice():
-	return News.objects.all()
+	return News.objects.all()[0:8]
 
 # def gethtml(link):
 # 	return getcontent(link)
@@ -174,3 +193,8 @@ class Register( View ):
 		else:
 			messages.success(request,"注册失败，用户已存在")
 			return JsonResponse({'flag':False})
+
+
+#搜索时调用
+class Rearch ( object ):
+	pass
