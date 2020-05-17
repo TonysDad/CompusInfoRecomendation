@@ -16,23 +16,32 @@ def getcontent(url):
 	content = soup.find_all(name='div',attrs={"class":"acontent"})
 
 	content = soup.select('.acontent')
-
-	# print(type(content))
-	# print(type(content[0]))
-
-	# return content[0]
-
 	content = str(content)
-
 	content = content.replace('/uploadfile','http://news.cqu.edu.cn/newsv2/uploadfile')
 	content = content.replace('http://news.cqu.edu.cn/newsv2http://news.cqu.edu.cn/newsv2',
 	                          'http://news.cqu.edu.cn/newsv2')
 	content = content.replace('"acontent"','"acontent" style="font-size:20px;text-indent: 2em;line-height:40px;"')
 
-	return (content[1:-1])
+	#标题
+	title = soup.select('.dtitle')[0]
+	title = title.string
+
+	#日期
+	date = soup.select('.dinfob')[0]
+	date = date.get_text
+
+	#摘要
+	abstract = soup.select('.adetail')[0]
+	abstract = abstract.string
+
+
+	return ({'content':content[1:-1],'title':title,'date':date,'abstract':abstract})
+
+
 
 url = 'http://news.cqu.edu.cn/newsv2/show-14-21838-1.html'
 
 html = geturl(url)
 
-print(getcontent(url))
+# print(getcontent(url))
+# gettitle(url)
