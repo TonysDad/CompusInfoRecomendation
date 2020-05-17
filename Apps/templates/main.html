@@ -105,12 +105,12 @@
             </div>
         </form>
     </aside>
-    <aside id="wpp-2" class="widget popular-posts">
+    <aside id="wpp-2" class="widget popular-posts" style="border: 1px solid #ef817d; border-radius: 6px;">
         <h3 class="widget-title" style="background-color: #e2615d;color:white;
         font-size: 20px;border-color: #e4b39b; border-top-right-radius: 6px;border-bottom-right-radius: 6px;">热门新闻</h3>
         <!-- WordPress Popular Posts -->
 
-        <ul class="wpp-list wpp-list-with-thumbnails">
+        <ul class="wpp-list wpp-list-with-thumbnails" style="margin-left: 3px;">
 
             {% for news in hot_topic %}
                 <li data-sr-id="23" style="; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">
@@ -128,11 +128,11 @@
         </ul>
 
     </aside>
-    <aside id="recent-posts-2" class="widget widget_recent_entries">
+    <aside id="recent-posts-2" class="widget widget_recent_entries" style="border: 1px solid #ef817d; border-radius: 6px;">
         <h3 class="widget-title" style="background-color: #e2615d;color:white;
         font-size: 20px;border-color: #e4b39b; border-top-right-radius: 6px;border-bottom-right-radius: 6px;">
             通知公告</h3>
-        <ul>
+        <ul style="margin-left: 3px;">
             {% for news in notice %}
                 <li>
                 <a style="color: #6ea4da;font-size:18px;" href="/main?nav={{ newstype }}&content=1&link={{ news.link }}">{{ news.title }}</a>
@@ -143,11 +143,11 @@
 
         </ul>
     </aside>
-    <aside id="recent-comments-2" class="widget widget_recent_comments">
+    <aside id="recent-comments-2" class="widget widget_recent_comments" style="border: 1px solid #ef817d; border-radius: 6px;">
         <h3 class="widget-title" style="background-color: #e2615d;color:white;
         font-size: 20px;border-color: #e4b39b; border-top-right-radius: 6px;border-bottom-right-radius: 6px;">
             最近浏览</h3>
-        <ul id="recentcomments">
+        <ul id="recentcomments" style="margin-left: 3px;">
             {% for news in recently_views %}
                 <li >
                     <a style="color: #6ea4da;font-size:18px;" href="/main?nav={{ newstype }}&content=1&link={{ news.link }}">{{ news.title}}</a>
