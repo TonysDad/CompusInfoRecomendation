@@ -1,0 +1,6 @@
+/*
+ ## Scroll Reveal
+ */
+#wrapper-featured .post .hovereffect, .post .hovereffect, .wpp-list li {
+    visibility: hidden;
+}

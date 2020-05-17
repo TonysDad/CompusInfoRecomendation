@@ -1,0 +1,82 @@
+{# 这个页面是学院新闻页面的左边内容部分  需要修改#}
+
+
+            {% for news in newslist %}
+                <article class="col-sm-12 col-md-12 col-lg-6 two-columns-style post-1075 post type-post status-publish format-standard has-post-thumbnail hentry category-featured category-tidbits tag-featured tag-tidbits">
+                    <div class="post-thumbnail">
+                        <div class="hovereffect" data-sr-id="13" style="height: 204px; visibility: visible;  -webkit-transform: scale(1); opacity: 1;transform: scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; transition: transform 0.5s linear 0.05s, opacity 0.5s linear 0.05s; ">
+                            <a href="/main?nav={{ newstype }}&content=1&link={{ news.link }}" rel="bookmark"><img
+                                 width="800" height="204px" src={{ news.cover_link }} class="attachment-verb-lite-rectangle size-verb-lite-rectangle wp-post-image"
+                                 alt="Aliquam faucibus lacinia interdum nisi"></a>
+                        </div>
+                    </div>
+                    <header class="entry-header">
+                        <h2 class="entry-title" style="height: 46px;"><a href="/main?nav={{ newstype }}&content=1&link={{ news.link }}"
+                             rel="bookmark">{{ news.title }}</a></h2>
+                        <div class="row">
+                            <div class="col-xs-10 col-sm-10 col-md-10">
+                                <div class="entry-meta">
+                                    <span class="byline"> </span> <span class="posted-on">on
+                                        <time class="entry-date published" datetime="2014-12-22T01:59:50+00:00">
+                                            {{ news.date }}
+                                        </time></span>
+                                </div><!-- .entry-meta -->
+
+                            </div>
+
+                            <div class="col-xs-2 col-sm-2 col-md-2">
+
+                                <div class="entry-meta pull-right" style="width: 100px; font-size: 18px">
+
+                                    <span class="comments-link">
+                                            浏览:{{ news.viewtimes }}
+                                        </span>
+                                </div><!-- .entry-meta -->
+
+                            </div>
+
+                        </div>
+
+
+                    </header><!-- .entry-header -->
+
+                    <div class="entry-content" style="display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;">
+
+                        {{ news.abstract }}
+
+                    </div><!-- .entry-content -->
+
+                </article><!-- #post-## -->
+
+            {% endfor %}
+
+
+            <div class="clearfix"></div>
+
+
+            <div class="post-nav">
+                <ul class="pager">
+                    {% if newslist.has_previous %}
+                        <li class="previous"><a href="/main?nav={{ newstype }}&page=1">第一页</a></li>
+                    <li><a href="/main?nav={{ newstype }}&page={{ newslist.previous_page_number}}"}} title="previous">上一页</a></li>
+                    {% endif %}
+
+                    {% for page in pageList %}
+                        {% if page == pagenum %}
+                            <li class="active"><span class="active">{{ page }}</span></li>
+                        {% else %}
+                            <li><a href="/main?nav={{ newstype }}&page={{ page }}">{{ page }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+
+
+                    {% if newslist.has_next %}
+                        <li><a href="/main?nav={{ newstype }}&page={{ newslist.next_page_number }}" title="next">下一页</a></li>
+                        <li class="next"><a href="/main?nav={{ newstype }}&page={{ finalpage }}">最后一页</a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+
+
