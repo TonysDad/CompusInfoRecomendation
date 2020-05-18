@@ -1,6 +1,23 @@
 {% extends 'index.html' %}
 
 {# 导航栏部分 #}
+<script>
+    var ul = document.querySelector('#menu-main-menu')
+    ul.onclick = function () {
+    var liArr = document.querySelectorAll('li')
+    for(var i=0;i<liArr.length;i++){
+        liArr[i].index = i;
+        liArr[i].onmousedown = function () {
+            for(var j=0; j<liArr.length;j++)
+            {
+                liArr[j].className="";
+            }
+            this.className="current-menu-item"
+        }
+    }
+}
+</script>
+
 {% block nav %}
     <div class="wrapper-fluid wrapper-navbar" id="wrapper-navbar">
 
@@ -14,8 +31,8 @@
                 <!-- Superfish Menu -->
                 <div class="menu-main-menu-container">
                     <ul id="menu-main-menu" class="sf-menu" type="1">
-                        <li id="menu-item-1949">
-                            <a style="font-size: 22px"  href="/main?nav=recommend">主页</a>
+                        <li id="menu-item-1949" >
+                            <a style="font-size: 22px" href="/main?nav=recommend">主页</a>
                         </li>
                         <li id="menu-item-200" >
                             <a  style="font-size: 22px" href="/main?nav=campusnews">校园新闻</a>
