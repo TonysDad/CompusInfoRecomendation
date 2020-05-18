@@ -23,18 +23,18 @@
 
 .item_content {
     display: flex;
+    font-family:Arial,'Times New Roman','Microsoft YaHei',SimHei;
+    font:bold 14px/0.75em Arial,'Times New Roman','Microsoft YaHei',SimHei;
 }
 
 .lists_item .item_content .item_title {
     padding-left: 15px;
-    font-size: 18px;
+
 }
 
 .lists_item .item_content .item_date {
     background: #9AAEDB;
-    font-family: "Microsoft Himalaya", serif;
     float: left;
-    font-size: 22px;
     padding: 8px 15px;
     line-height: 20px;
     color: navy;
