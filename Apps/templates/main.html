@@ -1,53 +1,45 @@
 {% extends 'index.html' %}
 
 {# 导航栏部分 #}
-<script>
-    var ul = document.querySelector('#menu-main-menu')
-    ul.onclick = function () {
-    var liArr = document.querySelectorAll('li')
-    for(var i=0;i<liArr.length;i++){
-        liArr[i].index = i;
-        liArr[i].onmousedown = function () {
-            for(var j=0; j<liArr.length;j++)
-            {
-                liArr[j].className="";
-            }
-            this.className="current-menu-item"
-        }
-    }
-}
-</script>
-
 {% block nav %}
     <div class="wrapper-fluid wrapper-navbar" id="wrapper-navbar">
-
         <div class="container" style="max-width: 1400px;">
-
-
-            <nav class="navbar navbar-light site-navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
-
-                <!-- Mobile ShiftNav Menu -->
-
-                <!-- Superfish Menu -->
-                <div class="menu-main-menu-container">
+            <nav class="navbar navbar-light site-navigation" style="height: 80px; border-radius:8px;  background-color: #d9534f; border-bottom: 3px solid #e6edf5;" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+            <!-- Superfish Menu -->
+                <div class="menu-main-menu-container" >
                     <ul id="menu-main-menu" class="sf-menu" type="1">
-                        <li id="menu-item-1949" >
-                            <a style="font-size: 22px" href="/main?nav=recommend">主页</a>
+                        <li id="menu-item-1949"
+                            {% if newstype == 'recommend' %}
+                                class="current-menu-item"
+                            {% endif %}
+                        >
+                            <a style="font-size: 30px; font-family: 华文楷体; color: white; height: 80px;"  href="/main?nav=recommend">主页</a>
                         </li>
-                        <li id="menu-item-200" >
-                            <a  style="font-size: 22px" href="/main?nav=campusnews">校园新闻</a>
+                        <li id="menu-item-200"
+                        {% if newstype == 'campusnews' %}
+                                class="current-menu-item"
+                            {% endif %}>
+                            <a  style="font-size: 30px; font-family: 华文楷体; color: white; height: 80px;" href="/main?nav=campusnews">校园新闻</a>
                         </li>
-                        <li id="menu-item-2000" >
-                            <a  style="font-size: 22px" href="/main?nav=media">媒体重大</a>
+                        <li id="menu-item-2000"
+                        {% if newstype == 'media' %}
+                                class="current-menu-item"
+                            {% endif %}>
+                            <a  style="font-size: 30px; font-family: 华文楷体; color: white; height: 80px;" href="/main?nav=media">媒体重大</a>
                         </li>
-                        <li id="menu-item-1989" >
-                            <a  style="font-size: 22px" href="/main?nav=notice">通知公告</a>
+                        <li id="menu-item-1989"  {% if newstype == 'notice' %}
+                                 class="current-menu-item"
+                            {% endif %}>
+                            <a  style="font-size: 30px; font-family: 华文楷体; color: white; height: 80px;" href="/main?nav=notice">通知公告</a>
                         </li>
 {#                        <li id="menu-item-1988" >#}
 {#                            <a  style="font-size: 22px" href="/main?nav=academinfo">学术通告</a>#}
 {#                        </li>#}
-                        <li id="menu-item-2010" >
-                            <a  style="font-size: 22px" href="/main?nav=instnews">学院新闻</a>
+                        <li id="menu-item-2010"
+                        {% if newstype == 'instnews' %}
+                                class="current-menu-item"
+                            {% endif %}>
+                            <a  style="font-size: 30px; font-family: 华文楷体; color: white; height: 80px;" href="/main?nav=instnews">学院新闻</a>
                         </li>
                     </ul>
                 </div>
@@ -122,7 +114,7 @@
             </div>
         </form>
     </aside>
-    <aside id="wpp-2" class="widget popular-posts" style="border: 1px solid #ef817d; border-radius: 6px;">
+    <aside id="wpp-2" class="widget popular-posts" style="border: 1px solid #bdd2ff; border-radius: 6px;">
         <h3 class="widget-title" style="background-color: #e2615d;color:white;
         font-size: 20px;border-color: #e4b39b; border-top-right-radius: 6px;border-bottom-right-radius: 6px;">热门新闻</h3>
         <!-- WordPress Popular Posts -->
@@ -145,7 +137,7 @@
         </ul>
 
     </aside>
-    <aside id="recent-posts-2" class="widget widget_recent_entries" style="border: 1px solid #ef817d; border-radius: 6px;">
+    <aside id="recent-posts-2" class="widget widget_recent_entries" style="border: 1px solid #bdd2ff; border-radius: 6px;">
         <h3 class="widget-title" style="background-color: #e2615d;color:white;
         font-size: 20px;border-color: #e4b39b; border-top-right-radius: 6px;border-bottom-right-radius: 6px;">
             通知公告</h3>
@@ -160,7 +152,7 @@
 
         </ul>
     </aside>
-    <aside id="recent-comments-2" class="widget widget_recent_comments" style="border: 1px solid #ef817d; border-radius: 6px;">
+    <aside id="recent-comments-2" class="widget widget_recent_comments" style="border: 1px solid #bdd2ff; border-radius: 6px;">
         <h3 class="widget-title" style="background-color: #e2615d;color:white;
         font-size: 20px;border-color: #e4b39b; border-top-right-radius: 6px;border-bottom-right-radius: 6px;">
             最近浏览</h3>
@@ -175,5 +167,9 @@
     </div><!-- .widget-area -->
 {% endblock %}
 
+#script
+{% block script %}
 
+
+{% endblock %}
 
