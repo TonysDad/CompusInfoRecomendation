@@ -1,28 +1,41 @@
-.container noticelist{
-
+.container noticelist {
     padding-top: 30px;
     margin-left: auto;
     font-size: 16px;
-    font-family: "Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu, Helvetica, Tahoma, Arial, sans-serif;
+    font-family: "Microsoft YaHei", 微软雅黑, "Microsoft JhengHei", 华文细黑, STHeiti, MingLiu, Helvetica, Tahoma, Arial, sans-serif;
 }
 
-.lists_items{
+.lists_items {
     width: 100%;
     padding: 0px;
 }
 
-.lists_item{
+.lists_item {
     padding: 40px 10px 20px 10px;
     width: 100%;
     border-bottom: 1px solid #b7c6d3;
 }
 
-.item_content{
+.lists_item .item_content {
     padding-right: 15px;
+    width: 100%;
 }
 
-.item_title{
-    padding-left: 20px;
-    height: 57px;
-    overflow: hidden;
+.item_content {
+    display: flex;
+}
+
+.lists_item .item_content .item_title {
+    padding-left: 15px;
+    font-size: 18px;
+}
+
+.lists_item .item_content .item_date {
+    background: #9AAEDB;
+    font-family: "Microsoft Himalaya", serif;
+    float: left;
+    font-size: 22px;
+    padding: 8px 15px;
+    line-height: 20px;
+    color: navy;
 }
