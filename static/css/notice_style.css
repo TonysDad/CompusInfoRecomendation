@@ -2,7 +2,7 @@
     padding-top: 30px;
     margin-left: auto;
     font-size: 16px;
-    font-family: "Microsoft YaHei", 微软雅黑, "Microsoft JhengHei", 华文细黑, STHeiti, MingLiu, Helvetica, Tahoma, Arial, sans-serif;
+    font-family: 华文楷体, 微软雅黑, "Microsoft JhengHei", 华文细黑, STHeiti, MingLiu, Helvetica, Tahoma, Arial, sans-serif;
 }
 
 .lists_items {
@@ -28,15 +28,16 @@
 
 .lists_item .item_content .item_title {
     padding-left: 20px;
-    padding-top: 5px;
-    font-size: 18px;
+    padding-top: 15px;
+    font-size: 24px;
 }
 
 .lists_item .item_content .item_date {
-    font:bold 12px/0.75em Arial,'Times New Roman','Microsoft YaHei',SimHei;
+    font:bold 22px/0.75em Arial,'Times New Roman','Microsoft YaHei',SimHei;
     background: #9AAEDB;
     float: left;
     padding: 8px 15px;
-    line-height: 20px;
+    line-height: 1.4;
     color: navy;
+    font-family: 仿宋;
 }
